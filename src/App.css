@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.pokemon-main{
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.pokemon-bio{
+  width: 100%;
+}
+
+.pokemon-data{
+  text-align: start;
+  text-align: left;
+}
+
+p{
+  white-space: pre;
+}

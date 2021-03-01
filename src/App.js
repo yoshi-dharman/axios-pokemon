@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 import './App.css';
 
 function App() {
+
+  const [pokemon, setPokemon] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon/pikachu")
+      // .then((response) => console.log(response));
+      .then((response) => setPokemon(response.data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {pokemon === ""
+      ? <div>Loading...</div>
+      : <div className="App">
+          <h1>Pokemon Info</h1>
+          <div className="pokemon-main">
+            <div className="pokemon-bio">
+              <img src={pokemon.sprites.other.dream_world.front_default} alt="Pikachu"></img>
+            </div>
+            <div className="pokemon-bio">
+              <h2>Data</h2>
+              <hr></hr>
+              <div className="pokemon-data">
+                <p>Name : {pokemon.species.name}</p>
+                <p>Type : {pokemon.types[0].type.name}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </>
+    
   );
 }
 
