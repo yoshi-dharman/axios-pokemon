@@ -30,11 +30,20 @@ function App() {
               <div className="pokemon-data">
                 <p>Name : {pokemon.species.name}</p>
                 <p>Type : {pokemon.types[0].type.name}</p>
+                <p>Height : {pokemon.height}</p>
+                <p>Weight : {pokemon.weight}</p>
                 {pokemon.abilities.map((item,index) => {
                     return (
                       <p key={index} >Abilities {index +1} : {item.ability.name}</p>
                     )
                 })}
+                <ul> All Move :
+                  {pokemon.moves.map((item,index) => {
+                      return (
+                        <li key={index}>{item.move.name}</li>
+                      )
+                  })}
+                </ul>
               </div>
             </div>
           </div>
