@@ -11,7 +11,9 @@ function App() {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/pikachu")
       // .then((response) => console.log(response));
-      .then((response) => setPokemon(response.data));
+      .then((response) => setPokemon(response.data))
+      .catch(err => "ada error : "+err);
+      
   }, []);
 
   return (
